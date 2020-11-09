@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   
   root to: "home#index"
   resources :users do
-    resources :measurments
+    resources :measurements
   end
-  
+
 end

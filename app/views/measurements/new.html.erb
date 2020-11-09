@@ -1,2 +1,27 @@
 <h1>Measurements#new</h1>
 <p>Find me in app/views/measurements/new.html.erb</p>
+
+<%= form_for [current_user, @measurement] do |f| %>
+  <%= f.label :weight %>
+  <%= f.number_field :weight, step: :any %>
+  <%= f.label :neck %>
+  <%= f.number_field :neck, step: :any %>
+  <%= f.label :arm %>
+  <%= f.number_field :arm, step: :any %>
+  <%= f.label :chest %>
+  <%= f.number_field :chest, step: :any %>
+  <%= f.label :waist %>
+  <%= f.number_field :waist, step: :any %>
+  <%= f.label :belly %>
+  <%= f.number_field :belly, step: :any %>
+  <%= f.label :hips %>
+  <%= f.number_field :hips, step: :any %>
+  <%= f.label :thighs %>
+  <%= f.number_field :thighs, step: :any %>
+  <%= f.label :calves %>
+  <%= f.number_field :calves, step: :any %>
+  <%= f.label :ankles %>
+  <%= f.number_field :ankles, step: :any %>
+
+  <%= f.submit  %>
+<% end %>

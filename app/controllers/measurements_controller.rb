@@ -2,17 +2,17 @@ class MeasurementsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @measurment = current_user.measurments
+    @measurements = current_user.measurements
   end
 
   def new
-    @measurement = current_user.measurments.new
+    @measurement = current_user.measurements.new
   end
 
   def create
-    @measurement = current_user.measurments.new(measurement_params)
+    @measurement = current_user.measurements.new(measurement_params)
     if @measurement.save
-      redirect_to :index
+      redirect_to user_measurements_path(current_user)
       flash[:alert] = "measurement added"
     else
       redirect_to :new
@@ -23,7 +23,7 @@ class MeasurementsController < ApplicationController
   def update
     @measurement = Measurement.find(params[:id])
     @measurement.update(measurment_params)
-    redirect_to :index
+    redirect_to user_measurements_path(current_user)
   end
 
   def show
@@ -33,11 +33,11 @@ class MeasurementsController < ApplicationController
   def destroy
     @measurement = Measurement.find(params[:id])
     @measurement.destroy
-    redirect_to :index
+    redirect_to user_measurements_path(current_user)
   end
 
   private
   def measurement_params
-    params.require(:measurment).permit(:weight, :neck, :arm, :chest, :waist, :belly, :hips, :thighs, :calves, :ankles)
+    params.require(:measurement).permit(:weight, :neck, :arm, :chest, :waist, :belly, :hips, :thighs, :calves, :ankles)
   end
 end
