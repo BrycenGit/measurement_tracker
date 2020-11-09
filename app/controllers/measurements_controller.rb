@@ -12,7 +12,7 @@ class MeasurementsController < ApplicationController
   def create
     @measurement = current_user.measurements.new(measurement_params)
     if @measurement.save
-      redirect_to user_measurements_path(current_user)
+      redirect_to measurements_path
       flash[:alert] = "measurement added"
     else
       redirect_to :new
@@ -23,7 +23,7 @@ class MeasurementsController < ApplicationController
   def update
     @measurement = Measurement.find(params[:id])
     @measurement.update(measurment_params)
-    redirect_to user_measurements_path(current_user)
+    redirect_to measurements_path
   end
 
   def show
@@ -33,7 +33,7 @@ class MeasurementsController < ApplicationController
   def destroy
     @measurement = Measurement.find(params[:id])
     @measurement.destroy
-    redirect_to user_measurements_path(current_user)
+    redirect_to measurements_path
   end
 
   private

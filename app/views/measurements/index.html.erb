@@ -5,12 +5,12 @@
   <h4>Measurements:</h4>
   <ul>
   <% @measurements.each do |measurement| %>
-    <li><%= link_to measurement.weight, user_measurement_path(current_user, measurement)%></li>
+    <li><%= link_to measurement.weight, measurement_path(current_user, measurement)%></li>
   <% end %>
   </ul>
 <% else %>
 <p>No measurements tracked</p>
 <% end %>
 <hr>
-<%= link_to "new Measurement", new_user_measurement_path(current_user) %>
+<%= link_to "new Measurement", new_measurement_path(current_user) %>
 
